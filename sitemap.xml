@@ -1,151 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TDEE Calculator | Calculate Daily Calorie Needs for Weight Loss, Maintenance, and Muscle Gain</title>
-    <meta name="description" content="Free TDEE calculator to estimate total daily energy expenditure and daily calorie needs for weight loss, maintenance, and muscle gain.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://aspectratiocaclutor.netlify.app/tdee-calculator.html">
-
-    <meta property="og:title" content="TDEE Calculator | Daily Calorie Needs Estimator">
-    <meta property="og:description" content="Estimate your total daily energy expenditure (TDEE) and calorie targets for fat loss, maintenance, or muscle gain.">
-    <meta property="og:url" content="https://aspectratiocaclutor.netlify.app/tdee-calculator.html">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "TDEE Calculator",
-      "url": "https://aspectratiocaclutor.netlify.app/tdee-calculator.html",
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "Any",
-      "description": "A free calculator to estimate total daily energy expenditure and help plan calorie intake for weight loss, maintenance, or muscle gain.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
-    }
-    </script>
-
-    <style>
-        body{font-family:Arial,sans-serif;background:#f5f7fa;margin:0;padding:20px}
-        .container{max-width:700px;margin:auto;background:#fff;padding:25px;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,0.1)}
-        h1{text-align:center;color:#222;font-size:clamp(1.7rem, 3vw, 2.5rem)}
-        p.sub{text-align:center;color:#666;line-height:1.6}
-        label{display:block;margin-top:15px;font-weight:bold}
-        input,select{width:100%;padding:12px;margin-top:5px;border:1px solid #ddd;border-radius:8px;font-size:16px;box-sizing:border-box}
-        .row{display:flex;gap:10px}.row div{flex:1}
-        button{width:100%;margin-top:20px;padding:15px;background:#ff5a5f;color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:bold;cursor:pointer}
-        #result{display:none;margin-top:20px;background:#e8f9ee;padding:20px;border-radius:12px;text-align:center}
-        .big{font-size:38px;font-weight:bold}
-        .card{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
-        .card div{flex:1;min-width:140px;background:#fff;padding:12px;border-radius:10px;border:1px solid #eee}
-        .info{margin-top:20px;color:#555;line-height:1.6;font-size:15px}
-        .callout{margin-top:18px;padding:12px 14px;border-left:4px solid #f59e0b;background:#fffbeb;color:#7c4a00;border-radius:8px;line-height:1.6}
-        .back-link{display:inline-block; margin-bottom:15px; background:#16a34a; color:white; padding:12px 22px; border-radius:8px; text-decoration:none; font-weight:bold; font-size:16px;}
-        @media (max-width: 560px){ .row{flex-direction:column;} }
-    </style>
-</head>
-<body>
-<div class="container">
-    <a href="index.html" class="back-link">⬅️ Back to Aspect Ratio Calculator</a>
-    <h1>TDEE Calculator 🔥</h1>
-    <p class="sub">Estimate your daily calorie needs for weight loss, weight maintenance, and muscle gain.</p>
-
-    <label>Gender</label>
-    <select id="gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-    </select>
-
-    <label>Age (years)</label>
-    <input type="number" id="age" value="25" min="1">
-
-    <div class="row">
-        <div>
-            <label>Weight (kg)</label>
-            <input type="number" id="weight" value="70" min="1">
-        </div>
-        <div>
-            <label>Height (cm)</label>
-            <input type="number" id="height" value="175" min="1">
-        </div>
-    </div>
-
-    <label>Activity Level</label>
-    <select id="activity">
-        <option value="1.2">Sedentary - little or no exercise</option>
-        <option value="1.375" selected>Lightly Active - exercise 1-3 days/week</option>
-        <option value="1.55">Moderately Active - exercise 3-5 days/week</option>
-        <option value="1.725">Very Active - exercise 6-7 days/week</option>
-        <option value="1.9">Extra Active - hard physical job + exercise</option>
-    </select>
-
-    <label>Your Goal</label>
-    <select id="goal">
-        <option value="lose">Lose Weight</option>
-        <option value="maintain" selected>Maintain Weight</option>
-        <option value="gain">Gain Muscle / Weight</option>
-    </select>
-
-    <button onclick="calculateTDEE()">Calculate My TDEE →</button>
-
-    <div id="result">
-        <h2>Your Daily Calories</h2>
-        <div class="big" id="tdeeResult">0 kcal</div>
-        <p>BMR: <b id="bmrResult">0</b> kcal</p>
-        <div class="card">
-            <div>📉 Lose Weight<br><b id="loseResult">0</b><br><small>kcal / day</small></div>
-            <div>⚖️ Maintain<br><b id="maint2">0</b><br><small>kcal / day</small></div>
-            <div>📈 Gain Muscle<br><b id="gainResult">0</b><br><small>kcal / day</small></div>
-        </div>
-    </div>
-
-    <div class="callout">
-        <strong>Important:</strong> This is a useful estimate based on standard formulas, but it is not a medical prescription. Actual calorie needs can vary depending on body composition, health conditions, medication, and activity outside of normal exercise.
-    </div>
-
-    <div class="info">
-        <h3>What is TDEE?</h3>
-        <p><b>TDEE (Total Daily Energy Expenditure)</b> is the total number of calories your body burns in a day, including your basal metabolic rate (BMR) and your daily activity level. This estimate can help you plan calories for fat loss, maintenance, or muscle gain.</p>
-        <p>The formula commonly used is based on standard BMR equations that estimate your resting calorie burn, then multiply by an activity factor to estimate total daily expenditure.</p>
-    </div>
-</div>
-
-<script>
-    function calculateTDEE(){
-        let gender = document.getElementById('gender').value;
-        let age = parseFloat(document.getElementById('age').value);
-        let weight = parseFloat(document.getElementById('weight').value);
-        let height = parseFloat(document.getElementById('height').value);
-        let activity = parseFloat(document.getElementById('activity').value);
-
-        if(!age || !weight || !height){
-            alert('Please fill in age, weight, and height before calculating.');
-            return;
-        }
-
-        let bmr;
-        if(gender === 'male') {
-            bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-        } else {
-            bmr = 10 * weight + 6.25 * height - 5 * age - 161;
-        }
-
-        let tdee = Math.round(bmr * activity);
-        let lose = Math.round(tdee * 0.85);
-        let gain = Math.round(tdee * 1.10);
-
-        document.getElementById('result').style.display = 'block';
-        document.getElementById('tdeeResult').innerText = tdee + ' kcal';
-        document.getElementById('bmrResult').innerText = Math.round(bmr);
-        document.getElementById('loseResult').innerText = lose;
-        document.getElementById('maint2').innerText = tdee;
-        document.getElementById('gainResult').innerText = gain;
-        document.getElementById('result').scrollIntoView({behavior:'smooth'});
-    }
-</script>
-</body>
-</html>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://aspectratiocaclutor.netlify.app/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://aspectratiocaclutor.netlify.app/image-size-calculator.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aspectratiocaclutor.netlify.app/tdee-calculator.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aspectratiocaclutor.netlify.app/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aspectratiocaclutor.netlify.app/contact.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aspectratiocaclutor.netlify.app/privacy-policy.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>
