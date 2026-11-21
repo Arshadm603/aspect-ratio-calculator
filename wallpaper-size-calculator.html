@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wallpaper Size Calculator - Find Perfect Mobile & PC Wallpaper Size</title>
+<meta name="description" content="Free Wallpaper Size Calculator. Find perfect wallpaper size for your Mobile, iPhone, Android, Laptop & PC in pixels. No blur, no crop. Check HD, Full HD, 4K sizes instantly.">
+<meta name="keywords" content="wallpaper size calculator, mobile wallpaper size, pc wallpaper size, iphone wallpaper size, desktop wallpaper dimensions">
+<link rel="canonical" href="https://sizecalchub.pages.dev/wallpaper-size-calculator.html">
+<meta property="og:title" content="Wallpaper Size Calculator - Mobile & PC">
+<meta property="og:description" content="Find perfect wallpaper size for your phone & PC. No blur, no crop.">
+<meta property="og:type" content="website">
+<style>
+*{box-sizing:border-box}body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#f6f7f9;color:#1a1a1a;line-height:1.6}header{background:#fff;padding:14px 16px;text-align:center;box-shadow:0 1px 5px rgba(0,0,0,.06)}header a{color:#111;text-decoration:none;font-weight:800}main{max-width:720px;margin:0 auto;padding:16px}h1{font-size:28px;line-height:1.25;text-align:center;margin:10px 0 8px} .sub{text-align:center;color:#555;margin:0 0 16px}.card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,.06)}label{font-weight:700;font-size:13px;display:block;margin-top:14px}select,input{width:100%;padding:13px;border:1.5px solid #ddd;border-radius:10px;font-size:16px;margin-top:6px} .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{display:block;width:100%;background:#2563eb;color:#fff;border:0;padding:14px;border-radius:10px;font-size:17px;font-weight:800;margin-top:16px;cursor:pointer}.result{background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;padding:16px;margin-top:16px;text-align:center;display:none}.result b{font-size:26px}.btn2{display:inline-block;background:#16a34a;color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;margin:8px 6px 0}.btn3{display:inline-block;background:#f59e0b;color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;margin:8px 6px 0}table{width:100%;border-collapse:collapse;background:#fff;margin-top:12px}th,td{border:1px solid #e5e7eb;padding:10px;text-align:left;font-size:14px}th{background:#f3f4f6}h2{margin-top:28px;font-size:22px}h3{font-size:18px}.faq{background:#fff;border-radius:12px;padding:14px;margin-top:10px}footer{text-align:center;color:#777;font-size:13px;padding:20px}footer a{color:#2563eb;text-decoration:none;margin:0 6px}
+@media(max-width:500px){h1{font-size:24px}.row{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the best wallpaper size for mobile?","acceptedAnswer":{"@type":"Answer","text":"For most Android phones 1080x2400 pixels is best. For iPhone 14/15, 1179x2556 pixels gives sharp result without crop."}},{"@type":"Question","name":"What is the best wallpaper size for PC?","acceptedAnswer":{"@type":"Answer","text":"For Full HD laptop use 1920x1080. For 4K monitor use 3840x2160. Always match your screen resolution."}},{"@type":"Question","name":"Why does my wallpaper look blurry?","acceptedAnswer":{"@type":"Answer","text":"Because you are using a small image on a big screen. Use same or bigger size than your screen resolution."}}]}
+</script>
+</head>
+<body>
+<header><a href="/">⬅ SizeCalcHub - Home</a></header>
+<main>
+<h1>Wallpaper Size Calculator</h1>
+<p class="sub">Find the perfect wallpaper size for your Mobile, iPhone & PC. No blur, no crop, no stretch.</p>
+
+<div style="text-align:center">
+<a class="btn2" href="/aspect-ratio-calculator.html">🔥 Try Aspect Ratio Calculator</a>
+<a class="btn3" href="/image-size-calculator.html">🖼️ Try Image Size Calculator</a>
+</div>
+
+<div class="card" style="margin-top:16px">
+<label>1. Select Your Device</label>
+<select id="device" onchange="setDevice()">
+<option value="1080|2400|Android Phone (1080 x 2400)">📱 Android Phone - 1080 x 2400</option>
+<option value="1179|2556|iPhone 14 / 15 - 1179 x 2556">🍎 iPhone 14 / 15 - 1179 x 2556</option>
+<option value="1290|2796|iPhone 14 Pro Max - 1290 x 2796">🍎 iPhone Pro Max - 1290 x 2796</option>
+<option value="1440|2560|Samsung Galaxy - 1440 x 2560">📱 Samsung Galaxy - 1440 x 2560</option>
+<option value="1920|1080|Desktop / Laptop Full HD - 1920 x 1080">💻 Laptop / PC Full HD - 1920 x 1080</option>
+<option value="3840|2160|4K Monitor - 3840 x 2160">🖥️ 4K Monitor - 3840 x 2160</option>
+<option value="custom|custom|Custom Size">✏️ Custom Size - I Will Enter Myself</option>
+</select>
+
+<div class="row">
+<div><label>Wallpaper Width (px)</label><input type="number" id="w" value="1080"></div>
+<div><label>Wallpaper Height (px)</label><input type="number" id="h" value="2400"></div>
+</div>
+<button class="btn" onclick="calc()">Calculate Perfect Size →</button>
+
+<div class="result" id="res">
+<div id="resText"></div>
+<p style="font-size:14px;color:#444" id="resTip"></p>
+</div>
+</div>
+
+<h2>How To Use This Wallpaper Size Calculator? (Step by Step)</h2>
+<p>Bohat se log Google se koi bhi wallpaper download kar ke laga lete hain, phir wo blur ya kata hua lagta hai. Iski wajah size ka farq hai. Is tool se aap 10 second me sahi size nikal sakte hain:</p>
+<ol>
+<li><b>Step 1:</b> Ooper se apna device select karein. Jaise Android, iPhone ya Laptop.</li>
+<li><b>Step 2:</b> Agar apna size pata hai to Custom pe apni Width aur Height likhein.</li>
+<li><b>Step 3:</b> Calculate button dabayein. Aapko perfect size, aspect ratio aur quality tip mil jayegi.</li>
+<li><b>Step 4:</b> Usi size ka wallpaper download karein. Wo bilkul sharp aur full screen lagega.</li>
+</ol>
+
+<h2>Popular Wallpaper Sizes Table</h2>
+<table>
+<tr><th>Device</th><th>Best Size (Pixels)</th><th>Ratio</th></tr>
+<tr><td>Android Phone</td><td>1080 x 2400</td><td>9:20</td></tr>
+<tr><td>iPhone 14 / 15</td><td>1179 x 2556</td><td>9:19.5</td></tr>
+<tr><td>iPhone Pro Max</td><td>1290 x 2796</td><td>9:19.5</td></tr>
+<tr><td>Samsung Galaxy S23</td><td>1440 x 3088</td><td>9:19.3</td></tr>
+<tr><td>Laptop Full HD</td><td>1920 x 1080</td><td>16:9</td></tr>
+<tr><td>4K Monitor</td><td>3840 x 2160</td><td>16:9</td></tr>
+<tr><td>iPad</td><td>2048 x 2732</td><td>3:4</td></tr>
+</table>
+
+<h2>Why Does My Wallpaper Look Blurry?</h2>
+<p>Agar aap 720p ki photo ko 1080p ya 4K screen pe lagayenge to wo phat jayegi. Hamesha apni screen se barabar ya us se bara size use karein. Choti photo ko kabhi bara mat karein.</p>
+<p><b>Pro Tip:</b> Mobile ke liye hamesha lambi (portrait) photo lein, PC ke liye chauri (landscape). Ulti photo lagane se adhi photo cut jati hai.</p>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq"><h3>What is the best wallpaper size for mobile?</h3><p>Most Android ke liye 1080 x 2400 best hai. iPhone 14/15 ke liye 1179 x 2556 use karein.</p></div>
+<div class="faq"><h3>What is the best wallpaper size for PC?</h3><p>Full HD laptop ke liye 1920 x 1080 aur 4K monitor ke liye 3840 x 2160 best hai.</p></div>
+<div class="faq"><h3>Can I use same wallpaper for phone and PC?</h3><p>Nahi, phone lamba hota hai aur PC chaura. Dono ke liye alag size chahiye warna crop ho jayega.</p></div>
+
+<p style="text-align:center;margin-top:20px">
+<a href="/tdee-calculator.html" style="color:#2563eb">Also Try: TDEE Calculator →</a>
+</p>
+</main>
+<footer>
+<a href="/about.html">About Us</a> | <a href="/contact.html">Contact Us</a> | <a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms.html">Terms</a> | <a href="/disclaimer.html">Disclaimer</a>
+<p>© 2026 SizeCalcHub - Free Calculators</p>
+</footer>
+<script>
+function setDevice(){
+let v=document.getElementById('device').value.split('|');
+if(v[0]!=='custom'){document.getElementById('w').value=v[0];document.getElementById('h').value=v[1];}
+}
+function gcd(a,b){return b==0?a:gcd(b,a%b)}
+function calc(){
+let w=+document.getElementById('w').value, h=+document.getElementById('h').value;
+let dev=document.getElementById('device').value.split('|')[2];
+if(!w||!h){alert('Please enter width and height');return}
+let g=gcd(w,h);let r=(w/g)+':'+(h/g);
+let quality = w>=3840 ? 'Ultra HD 4K Quality - Bilkul Sharp' : w>=1920 ? 'Full HD Quality - Bilkul Clear' : w>=1080 ? 'HD Quality - Achi Lagegi' : 'Low Quality - Blur Ho Sakti Hai';
+document.getElementById('res').style.display='block';
+document.getElementById('resText').innerHTML='Your Perfect Size: <br><b>'+w+' x '+h+' px</b><br>Device: '+dev+'<br>Aspect Ratio: '+r+'<br>Quality: '+quality;
+document.getElementById('resTip').innerText='Tip: Isi size ka wallpaper download karein. Is se choti photo mat lagayein warna blur ho jayegi.';
+document.getElementById('res').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
