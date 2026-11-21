@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aspectratiocaclutor.netlify.app/sitemap.xml
+Sitemap: https://sizecalchub.pages.dev/sitemap.xml
